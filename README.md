@@ -32,7 +32,7 @@ The project uses 4 api's but none of them require any api keys so you don't need
 
 ## AI Use
 
-AI was used for CSS (I HATE CSS)
+AI was used for CSS (I still HATE CSS)
 
 ## License
 
