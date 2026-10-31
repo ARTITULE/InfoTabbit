@@ -1,0 +1,559 @@
+
+:root {
+    font-family: Inter, system-ui, sans-serif;
+    color: #f5f5f5;
+    background: #111318;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+
+    background: radial-gradient(
+        circle at center,
+        #1e2433 0%,
+        #111318 65%
+    );
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* MAIN LAYOUT */
+
+#app {
+    display: grid;
+
+    width: 100%;
+    min-height: 100vh;
+    height: 100dvh;
+
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr) 68px minmax(0, 1fr);
+
+    gap: 16px;
+    padding: 24px;
+}
+
+/* TITLE */
+
+#title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    align-self: end;
+    justify-self: center;
+
+    text-align: center;
+    margin-bottom: 32px;
+    pointer-events: none;
+}
+
+#main-title {
+    margin: 0 0 12px;
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+#more-info {
+    margin: 0;
+    font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+    font-weight: 400;
+    color: #989eac;
+}
+
+/* SEARCH */
+
+#search-engine {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    align-self: center;
+    justify-self: start;
+
+    width: 105px;
+    height: 68px;
+
+    margin-left: 6%;
+    padding: 0 10px;
+
+    color: white;
+    background: #222733;
+
+    border: 1px solid #3b4150;
+    border-radius: 14px;
+
+    outline: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-form {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    align-self: center;
+    justify-self: center;
+
+    display: flex;
+    gap: 12px;
+
+    width: 88%;
+    min-width: 0;
+    padding-left: 117px;
+}
+
+#search-input {
+    flex: 1;
+    min-width: 0;
+
+    height: 68px;
+    padding: 0 24px;
+
+    font-size: 1.2rem;
+
+    color: #fff;
+    background: #222733;
+
+    border: 1px solid #3b4150;
+    border-radius: 14px;
+
+    outline: none;
+}
+
+#search-input::placeholder {
+    color: #989eac;
+}
+
+#search-input:focus,
+#search-engine:focus {
+    border-color: #8b95ff;
+}
+
+#search-form button {
+    flex-shrink: 0;
+
+    height: 68px;
+    padding: 0 30px;
+
+    color: white;
+    background: #6d79f7;
+
+    border: none;
+    border-radius: 14px;
+
+    font-weight: 600;
+}
+
+#search-form button:hover {
+    background: #818bff;
+}
+
+/* SHARED CARDS */
+
+.fact-card,
+.pokemon-card,
+.dog-card,
+.wikipedia-card {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr);
+
+    column-gap: 12px;
+    row-gap: 10px;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 16px;
+    background: #191d25;
+
+    border: 1px solid #303541;
+    border-radius: 16px;
+
+    overflow: hidden;
+}
+
+.fact-card h2,
+.pokemon-card h2,
+.dog-card h2,
+.wikipedia-card h2 {
+    grid-column: 1;
+    grid-row: 1;
+
+    align-self: center;
+
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 650;
+}
+
+/* SHARED TOP-RIGHT BUTTONS */
+
+.fact-card button,
+.pokemon-card button,
+.dog-card button,
+.wikipedia-card button {
+    grid-column: 2;
+    grid-row: 1;
+
+    justify-self: end;
+    align-self: center;
+
+    padding: 7px 11px;
+
+    color: #e8eaf1;
+    background: #292e3a;
+
+    border: 1px solid #3a4150;
+    border-radius: 8px;
+
+    font-size: 0.78rem;
+    white-space: nowrap;
+
+    transition: background 0.15s ease;
+}
+
+.fact-card button:hover,
+.pokemon-card button:hover,
+.dog-card button:hover,
+.wikipedia-card button:hover {
+    background: #363d4c;
+}
+
+/* RANDOM FACT */
+
+.fact-card {
+    grid-column: 1 / 7;
+    grid-row: 1;
+
+    align-self: start;
+    max-height: 190px;
+}
+
+#random-fact {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    margin: 0;
+
+    color: #cbd0db;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* POKEMON */
+
+.pokemon-card {
+    grid-column: 20 / 25;
+    grid-row: 1;
+
+    align-self: start;
+    height: 100%;
+    max-height: 260px;
+}
+
+#random-pokemon-name {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    text-align: center;
+    margin: 0;
+
+    font-size: 1rem;
+}
+
+#random-pokemon-image {
+    grid-column: 1 / -1;
+    grid-row: 3;
+
+    justify-self: center;
+
+    width: 100%;
+    max-width: 150px;
+    min-height: 0;
+
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* BOTTOM CENTERED GROUP */
+
+.wikipedia-card {
+    grid-column: 4 / 17;
+    grid-row: 3;
+
+    grid-template-columns: minmax(0, 1fr) minmax(0, 180px);
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+
+    column-gap: 16px;
+    row-gap: 8px;
+
+    align-self: stretch;
+}
+
+.dog-card {
+    grid-column: 17 / 22;
+    grid-row: 3;
+
+    align-self: stretch;
+}
+
+/* DOG */
+
+#random-dog-image {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    justify-self: center;
+    align-self: stretch;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    object-fit: contain;
+    border-radius: 10px;
+    background: #11151c;
+}
+
+/* WIKIPEDIA CONTENT */
+
+.wikipedia-card h2 {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.wikipedia-card button {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#random-wikipedia-title {
+    grid-column: 1;
+    grid-row: 2;
+
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+#random-wikipedia-text {
+    grid-column: 1;
+    grid-row: 3;
+
+    min-height: 0;
+    margin: 0;
+
+    color: #cbd0db;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    overflow-y: auto;
+}
+
+#random-wikipedia-image {
+    grid-column: 2;
+    grid-row: 2 / 5;
+
+    display: block;
+    align-self: center;
+    justify-self: center;
+
+    width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#random-wikipedia-image[hidden] {
+    display: none;
+}
+
+#random-wikipedia-link {
+    grid-column: 1;
+    grid-row: 4;
+
+    justify-self: start;
+
+    color: #a5aeff;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+#random-wikipedia-link:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    #app {
+        display: flex;
+        flex-direction: column;
+
+        height: auto;
+        min-height: 100dvh;
+
+        gap: 16px;
+        padding: 20px;
+    }
+
+    #title {
+        order: 0;
+        margin: 0;
+    }
+
+    #search-engine {
+        order: 1;
+        width: 100%;
+        height: 50px;
+        margin: 0;
+    }
+
+    #search-form {
+        order: 2;
+        width: 100%;
+        padding: 0;
+    }
+
+    #search-input,
+    #search-form button {
+        height: 56px;
+    }
+
+    .fact-card,
+    .pokemon-card,
+    .dog-card,
+    .wikipedia-card {
+        width: 100%;
+        max-width: none;
+        max-height: none;
+        height: auto;
+        min-height: 170px;
+    }
+
+    .fact-card {
+        order: 3;
+    }
+
+    .pokemon-card {
+        order: 4;
+        min-height: 240px;
+    }
+
+    .wikipedia-card {
+        order: 5;
+        min-height: 280px;
+    }
+
+    .dog-card {
+        order: 6;
+        min-height: 240px;
+    }
+
+    #random-pokemon-image {
+        height: 150px;
+    }
+
+    #random-dog-image {
+        height: 180px;
+    }
+
+    #random-wikipedia-image {
+        max-height: 180px;
+    }
+}
+
+@media (max-width: 550px) {
+    #app {
+        padding: 14px;
+    }
+
+    #search-form {
+        flex-direction: column;
+    }
+
+    #search-form button {
+        width: 100%;
+    }
+
+    .wikipedia-card {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    #random-wikipedia-image {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        max-width: 220px;
+    }
+
+    #random-wikipedia-link {
+        grid-row: 5;
+    }
+}
+/* GITHUB SOURCE LINK */
+
+#github-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    background: #292e3a;
+    border: 1px solid #3a4150;
+    border-radius: 12px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+    z-index: 10;
+}
+
+#github-link img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+#github-link:hover {
+    background: #363d4c;
+    transform: translateY(-2px);
+}
+
+#github-link:focus-visible {
+    outline: 2px solid #8b95ff;
+    outline-offset: 3px;
+}
