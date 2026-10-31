@@ -11,6 +11,11 @@
 <body>
     <div id="app">
 
+        <div id="title">
+            <h1 id="main-title">InfoTabbit</h1>
+            <h2 id="more-info">Here is some information that you didn't need. (And a search engine for the one that you do :D)</h2>
+        </div>
+
         <select id="search-engine">
             <option value="google">Google</option>
             <option value="duckduckgo">DuckDuckGo</option>
@@ -22,10 +27,37 @@
             <button type="submit">Search</button>
         </form>
 
-        <div>
+        <div class="fact-card">
+            <h2>Random Fact</h2>
             <p id="random-fact">Loading fact...</p>
             <button id="random-fact-button">New fact</button>
         </div>
+
+        <div class="dog-card">
+            <h2>Random Dog</h2>
+            <img id="random-dog-image" alt="Random dog">
+            <button id="random-dog-button">New dog</button>
+        </div>
+
+        <div class="pokemon-card">
+            <h2>Random Pokemon</h2>
+            <h3 id="random-pokemon-name">Name</h3>
+            <img id="random-pokemon-image" alt="Random Pokemon">
+            <button id="random-pokemon-button">New Pokemon</button>
+        </div>
+
+        <div class="wikipedia-card">
+            <h2>Random Wikipedia Article</h2>
+            <h3 id="random-wikipedia-title">Loading article...</h3>
+            <img id="random-wikipedia-image" alt="Wikipedia article image">
+            <p id="random-wikipedia-text"></p>
+            <a id="random-wikipedia-link" target="_blank" rel="noopener noreferrer">Read on Wikipedia</a>
+            <button id="random-wikipedia-button">New article</button>
+        </div>
+
+            <a id="github-link" href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" rel="noopener noreferrer" aria-label="View source code on GitHub" title="View source code">
+            <img src="src/assets/github_icon.svg" alt="Github Icon">
+            </a>
 
     </div>
     <script type="module" src="/src/main.js"></script>
